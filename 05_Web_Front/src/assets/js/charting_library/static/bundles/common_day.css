@@ -1,0 +1,74 @@
+
+.chart-controls-bar{
+    height: 30px;
+    left: 0;
+  }
+  .chart-controls-bar-buttons{
+    line-height: 30px;
+  }
+  .chart-controls-bar-buttons a{
+    padding: 4px 13px;
+    height: 30px;
+  }
+.header-chart-panel .group.header-group-properties{
+    margin-left: 0;
+  }
+
+.chart-page .tv-side-toolbar .group .button:hover, .chart-page .tv-side-toolbar .group .button.selected, .chart-page .header-chart-panel .group .button:hover, .chart-page .header-chart-panel .group .button.selected {
+    background: #fff;
+    color: #f0a70a;
+    border: none;
+  }
+  .bottom-widgetbar-content.backtesting .button, .header-chart-panel .button, .hotlist-controls .button, .symbol-edit-widget .button{
+      background-color: #fff;
+      color: #333;
+      border: none;
+  }
+  .layout__area--top.header-chart-panel{
+      top: 0!important;
+  }
+  .feature-no-touch ._tv-dialog .button:not(.disabled):not(.selected):hover:before, .feature-no-touch ._tv-dialog .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch ._tv-dialog .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch ._tv-dialog .submenu:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .button:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .submenu:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .button:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .submenu:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .button:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .submenu:not(.disabled):not(.selected):hover:before{
+      border-color: #f0f0f0;
+  }
+  .chart-page .tv-side-toolbar .group, .chart-page .header-chart-panel .group {
+    float: left;
+  }
+  .chart-page .tv-side-toolbar .header-group-properties, .chart-page .tv-side-toolbar .header-group-indicators, .chart-page .header-chart-panel .header-group-properties, .chart-page .header-chart-panel .header-group-indicators {
+    float: none;
+  }
+  .chart-page .tv-side-toolbar .header-group-fullscreen, .chart-page .header-chart-panel .header-group-fullscreen {
+    float: right;
+    padding-right: 5px;
+  }
+/* 计数指标弹出框 */
+  .tv-dialog.i-focused{
+    top: 45px!important;
+    height: calc(100% - 100px);
+    overflow: hidden;
+  }
+/* 设置弹出框 */
+._tv-dialog{
+  top: 45px!important;
+  overflow: auto;
+  height: calc(100% - 100px);
+  width: 80%;
+  left: 0!important;
+  right: 0;
+  margin: 0 auto;
+}
+/* 
+  .chart-markup-table.pane>div{
+    padding-top: 20px;
+  } */
+
+
+  .pane-legend{
+      top: -2px;
+  }
+
+  .js-rootresizer__contents{
+    background-color: #fff;
+  }
+  .loading-indicator{
+    background-color: #fff;
+  }

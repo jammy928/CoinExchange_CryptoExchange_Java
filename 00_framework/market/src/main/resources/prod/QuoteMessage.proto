@@ -1,0 +1,14 @@
+// [START declaration]
+syntax = "proto3";
+package tutorial;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "com.spark.example.netty.message";
+option java_outer_classname = "QuoteMessage";
+// [END java_declaration]
+//消息传输包
+message SimpleResponse{
+	int32 code = 1;
+	string message = 2;
+}

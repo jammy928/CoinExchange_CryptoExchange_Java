@@ -1,0 +1,73 @@
+.errorFormatBorder {
+	.ivu-input{
+		border-color: #ed3f14a6;
+		box-shadow: 0 0 2px 1px #ed3f14a6;
+	}
+}
+
+.resetRequired{
+	&>.ivu-form-item-label:before{
+		content: "*";
+		display: inline-block;
+		margin-right: 4px;
+		line-height: 1;
+		font-family: SimSun;
+		font-size: 12px;
+		color: #ed3f14;
+	}
+}
+
+.resetFromErr  {
+	.ivu-input{
+		border: 1px solid #ed3f14;
+	}
+}
+
+.resetFromErr  {
+	.ivu-input:focus{
+		border-color: #ed3f14;
+		outline: 0;
+		box-shadow: 0 0 0 2px rgba(237, 63, 20, .2);
+	}
+}
+
+
+/* 不显示用户名、密码 输入框logo */
+
+.ivu-input {
+  background-image: unset !important;
+}
+
+/* form内单行显示自定义input 编辑投票 */
+
+.formLine {
+	&>.ivu-form-item-label {
+		width: 90px !important;
+	}
+}
+
+.formLine{
+	&>.ivu-form-item-content {
+		margin-left: 90px !important;
+	}
+}
+
+/* 用户管理 添加角色路由*/
+
+.mainEmployeeContent {
+	&>.ivu-form-item-content {
+		padding-right: 60px !important;
+	}
+}
+
+/* 
+	认证商家详情页
+*/
+.businessDetail{
+		.ivu-spin-main{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+	}
+}

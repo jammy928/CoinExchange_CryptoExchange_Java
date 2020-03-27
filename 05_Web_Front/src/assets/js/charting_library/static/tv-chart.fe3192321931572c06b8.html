@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <link type="text/css" href="https://bizzan.oss-cn-hangzhou.aliyuncs.com/assets/charting_library/static/bundles/library.2e4e86e4539a260f4a7b69dd55f2595b.css" rel="stylesheet" />
+    <style>
+        html, body{
+            background: #192330;
+        }
+        #loading-indicator,body.chart-page {
+            background: 0 0;
+        }
+    </style>
+</head>
+
+<body class="chart-page on-widget">
+    <div class="loading-indicator" id="loading-indicator"></div>
+    <script src="https://bizzan.oss-cn-hangzhou.aliyuncs.com/assets/charting_library/static/js/external/spin.min.js"></script>
+    <script>
+        var loadingSpinner = new Spinner({
+            lines: 17,
+            length: 0,
+            width: 3,
+            radius: 30,
+            scale: 1,
+            corners: 1,
+            color: "#00A2E2",
+            opacity: 0,
+            rotate: 0,
+            direction: 1,
+            speed: 1.5,
+            trail: 60,
+            fps: 20,
+            zIndex: 2000000000,
+            className: "spinner",
+            top: "50%",
+            left: "50%",
+            shadow: false,
+            hwaccel: false
+        }).spin(document.getElementById("loading-indicator"));
+    </script>
+    <script>
+        var JSServer = {};
+        var __initialEnabledFeaturesets = ["charting_library"];
+    </script>
+    <script>
+        urlParams = (function() {
+            var e, c = /\+/g,
+                h = /([^&=]+)=?([^&]*)/g,
+                a = function(j) {
+                    return decodeURIComponent(j.replace(c, " ")).replace(/<\/?[^>]+(>|$)/g, "")
+                },
+                f = function() {
+                    var k = location.href;
+                    var j = k.indexOf("#");
+                    if (j >= 0) {
+                        return k.substring(j + 1)
+                    } else {
+                        throw "Unexpected use of this page"
+                    }
+                }(),
+                i = {};
+            while (e = h.exec(f)) {
+                i[a(e[1])] = a(e[2])
+            }
+            var g = window.parent[i.uid];
+            var d = ["datafeed", "customFormatters", "brokerFactory"];
+            for (var b in g) {
+                if (b === "tradingController") {
+                    window.tradingController = g[b]
+                } else {
+                    if (d.indexOf(b) === -1) {
+                        i[b] = JSON.stringify(g[b])
+                    }
+                }
+            }
+            return i
+        })();
+        window.locale = urlParams.locale;
+        window.language = urlParams.locale;
+    </script>
+    <script src="https://bizzan.oss-cn-hangzhou.aliyuncs.com/assets/charting_library/static/bundles/vendors.8c445fe91dc494c5dec6.js"></script>
+    <script src="https://bizzan.oss-cn-hangzhou.aliyuncs.com/assets/charting_library/static/bundles/library.52f448f933885e5e0fed.js"></script>
+</body>
+
+</html>

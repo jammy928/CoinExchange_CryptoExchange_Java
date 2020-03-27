@@ -1,0 +1,89 @@
+.chart-controls-bar{
+  height: 30px;
+  left: 0;
+}
+.chart-controls-bar-buttons{
+  line-height: 30px;
+}
+.chart-controls-bar-buttons a{
+  padding: 4px 13px;
+  height: 30px;
+}
+.layout__area--top.header-chart-panel{
+  top: 0 !important;
+  /*z-index: 999;*/
+  /*width: 40% !important;*/
+  /*left: 60% !important;*/
+}
+.header-chart-panel .left{
+  /*text-align: right;*/
+}
+.header-chart-panel .group{
+  /*margin: 5px 0 0;*/
+}
+.header-chart-panel .group.header-group-properties{
+  margin-left: 0;
+}
+/*._tv-dialog{*/
+  /*z-index: 1110 !important;*/
+/*}*/
+.real-op>a:nth-child(2){
+  color: #8b8c8e;
+  stroke: #8b8c8e;
+  fill: #8b8c8e;
+}
+.common-op>a:nth-child(1){
+  color: #8b8c8e;
+  stroke: #8b8c8e;
+  fill: #8b8c8e;
+}
+
+.chart-page .tv-side-toolbar .group .button:hover, .chart-page .tv-side-toolbar .group .button.selected, .chart-page .header-chart-panel .group .button:hover, .chart-page .header-chart-panel .group .button.selected {
+  background: #2c3b59;
+  color: #c7cce6;
+}
+.chart-page .tv-side-toolbar .group .button, .chart-page .header-chart-panel .group .button {
+  font-weight: normal;
+  color: #4e5b85;
+}
+.chart-page .button.selected, .chart-page .button.active {
+  background-color: #4e5b85 !important;
+}
+
+.chart-page .tv-side-toolbar .group, .chart-page .header-chart-panel .group {
+  float: left;
+}
+.chart-page .tv-side-toolbar .header-group-properties, .chart-page .tv-side-toolbar .header-group-indicators, .chart-page .header-chart-panel .header-group-properties, .chart-page .header-chart-panel .header-group-indicators {
+  float: none;
+}
+.chart-page .tv-side-toolbar .header-group-fullscreen, .chart-page .header-chart-panel .header-group-fullscreen {
+  float: right;
+  padding-right: 5px;
+}
+
+/* 计数指标弹出框 */
+.tv-dialog.i-focused{
+  top: 45px!important;
+  height: calc(100% - 100px);
+  overflow: hidden;
+}
+.pane-legend{
+  top: -2px;
+}
+/* 设置弹出框 */
+._tv-dialog{
+  top: 45px!important;
+  overflow: auto;
+  height: calc(100% - 100px);
+  width: 80%;
+  left: 0!important;
+  right: 0;
+  margin: 0 auto;
+}
+
+.js-rootresizer__contents{
+  background-color: #192330;
+}
+.loading-indicator{
+  background-color: #18202a;
+}

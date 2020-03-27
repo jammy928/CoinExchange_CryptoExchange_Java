@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan
+		base-package="com.bizzan.bitrade.dao" />
+	<context:component-scan
+		base-package="com.bizzan.bitrade.service" />
+	<context:component-scan
+		base-package="com.bizzan.bitrade.config" />
+	<context:component-scan
+		base-package="com.bizzan.bitrade.dto" />
+	<context:component-scan
+		base-package="com.bizzan.bitrade.entity" />
+	<context:component-scan
+		base-package="com.bizzan.bitrade.es" />
+	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
+	<bean id="dataSource"
+		class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+		destroy-method="close">
+		<!-- 基本属性 url、user、password -->
+		<property name="url"
+			value="jdbc:mysql://39.104.97.192:3306/bitrade?characterEncoding=utf-8" /><!--rm-t4n7y6e0efn806591.mysql.singapore.rds.aliyuncs.com:3306/cex_test -->
+		<property name="username" value="root" />
+		<property name="password" value="asd1230" /><!--Cex_mysql_88 -->
+		<property name="connectionProperties"
+			value="config.decrypt=false" />
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="10" />
+		<property name="minIdle" value="10" />
+		<property name="maxActive" value="300" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="false" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="20" />
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+		<property name="proxyFilters">
+			<list>
+				<ref bean="logFilter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="logFilter"
+		class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+		<property name="statementExecutableSqlLogEnable" value="true" />
+	</bean>
+	<jpa:repositories base-package="com.bizzan.bitrade.dao"
+		repository-impl-postfix="Impl"
+		entity-manager-factory-ref="entityManagerFactory" />
+	<!-- 实体管理器 -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.bizzan.bitrade" />
+
+		<property name="persistenceProvider">
+			<bean class="org.hibernate.ejb.HibernatePersistence" />
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="false" />
+				<property name="database" value="MYSQL" />
+				<property name="databasePlatform"
+					value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+		<property name="jpaDialect">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</property>
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.query.substitutions"
+					value="true 1, false 0" />
+				<entry key="hibernate.default_batch_fetch_size" value="16" />
+				<entry key="hibernate.max_fetch_depth" value="2" />
+				<entry key="hibernate.generate_statistics" value="true" />
+				<entry key="hibernate.bytecode.use_reflection_optimizer"
+					value="true" />
+				<entry key="hibernate.cache.use_second_level_cache"
+					value="false" />
+				<entry key="hibernate.cache.use_query_cache" value="false" />
+				<entry key="hibernate.physical_naming_strategy"
+					value="org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy" />
+			</map>
+		</property>
+	</bean>
+	<bean id="db" class="com.sparkframework.sql.DB">
+		<constructor-arg index="0" ref="dataSource" />
+		<constructor-arg index="1" value="true" />
+	</bean>
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	<!-- 启用支持Annotation注解方式的事务管理 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" proxy-target-class="true" />
+	<bean id="application_config"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:application.properties</value>
+		</property>
+	</bean>
+
+
+	<!-- jedis 配置 -->
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig"></bean>
+	<bean id="redisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<property name="poolConfig" ref="poolConfig" />
+		<property name="port" value="${redis.port}" />
+		<property name="hostName" value="${redis.host}" />
+		<property name="password" value="${redis.password}" />
+		<property name="timeout" value="${redis.timeout}"></property>
+	</bean>
+	<bean id="redisTemplate" name="redisTemplate"
+		class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory"
+			ref="redisConnectionFactory" />
+		<property name="keySerializer" ref="stringRedisSerializer" />
+		<property name="valueSerializer" ref="stringRedisSerializer" />
+		<property name="hashKeySerializer"
+			ref="stringRedisSerializer" />
+		<property name="hashValueSerializer"
+			ref="jackson2JsonRedisSerializer" />
+		<!-- <property name="enableTransactionSupport" value="true"/> -->
+	</bean>
+	<bean id="jdkredisTemplate" name="jdkredisTemplate"
+		class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory"
+			ref="redisConnectionFactory" />
+		<property name="keySerializer"
+			ref="jdkSerializationRedisSerializer" />
+		<property name="valueSerializer"
+			ref="jdkSerializationRedisSerializer" />
+		<property name="hashKeySerializer"
+			ref="stringRedisSerializer" />
+		<property name="hashValueSerializer"
+			ref="jackson2JsonRedisSerializer" />
+	</bean>
+	<bean id="jacksonredisTemplate" name="jacksonredisTemplate"
+		class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory"
+			ref="redisConnectionFactory" />
+		<property name="keySerializer"
+			ref="jackson2JsonRedisSerializer" />
+		<property name="valueSerializer"
+			ref="jackson2JsonRedisSerializer" />
+		<property name="hashKeySerializer"
+			ref="stringRedisSerializer" />
+		<property name="hashValueSerializer"
+			ref="jackson2JsonRedisSerializer" />
+	</bean>
+	<bean id="stringRedisSerializer"
+		class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+	<bean id="jackson2JsonRedisSerializer"
+		class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />
+	<bean id="jdkSerializationRedisSerializer"
+		class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+	<!-- 配置缓存 -->
+	<bean id="cacheManager"
+		class="org.springframework.data.redis.cache.RedisCacheManager">
+		<constructor-arg ref="jdkredisTemplate" />
+	</bean>
+
+	<bean
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="objectMapper">
+			<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+				<property name="dateFormat">
+					<bean class="java.text.SimpleDateFormat">
+						<constructor-arg type="java.lang.String"
+							value="yyyy-MM-dd HH:mm:ss" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+</beans>

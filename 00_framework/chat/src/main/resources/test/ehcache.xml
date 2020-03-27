@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="es">
+
+    <diskStore path="java.io.tmpdir"/>
+	<defaultCache eternal="false" 
+		   maxElementsInMemory="1000"
+       	   overflowToDisk="false" 
+       	   diskPersistent="false" 
+       	   timeToIdleSeconds="0"
+           timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LRU" />
+ 
+    <cache name="shiro-activeSessionCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+	<!--         
+   	 配置自定义缓存        
+    name：Cache的唯一标识        
+    maxElementsInMemory：缓存中允许创建的最大对象数        
+    maxElementsOnDisk：磁盘中最大缓存对象数，若是0表示无穷大        
+    eternal：Element是否永久有效，一但设置了，timeout将不起作用，对象永不过期。       
+    timeToIdleSeconds：缓存数据的钝化时间，也就是在一个元素消亡之前，                    
+            两次访问时间的最大时间间隔值，这只能在元素不是永久驻留时有效，                    
+            如果该值是 0 就意味着元素可以停顿无穷长的时间。        
+    timeToLiveSeconds：缓存数据的生存时间，也就是一个元素从构建到消亡的最大时间间隔值，                               这只能在元素不是永久驻留时有效，如果该值是0就意味着元素可以停顿无穷长的时间。        
+    overflowToDisk：内存不足时，是否启用磁盘缓存。        
+    diskPersistent：是否缓存虚拟机重启期数据	
+    diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒	
+    diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区        
+    memoryStoreEvictionPolicy：缓存满了之后的淘汰算法。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）        
+      -->
+    <cache name="mybatisCache"         
+        maxElementsInMemory="10000"         
+        eternal="false"        
+        overflowToDisk="false"         
+        timeToIdleSeconds="900"         
+        timeToLiveSeconds="1800"        
+        memoryStoreEvictionPolicy="LFU" />  
+</ehcache>

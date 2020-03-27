@@ -1,0 +1,7 @@
+1、npm  install
+2、npm run dev
+3、遇到报错：TypeError [ERR_INVALID_CALLBACK]: Callback must be a function
+     打开build/webpack.dev.config.js，替换以下内容
+	fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
+           =>fs.write(fd, buf, 0, 'utf-8', function(err, written, buffer) {});
+     重新执行npm run dev即可
