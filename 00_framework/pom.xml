@@ -49,7 +49,7 @@
 		<commons-beanutils_version>1.8.3</commons-beanutils_version>
 		<commons-lang3_version>3.4</commons-lang3_version>
 		<commons-logging_version>1.1.3</commons-logging_version>
-		<commons-collections_version>3.2</commons-collections_version>
+		<commons-collections_version>3.2.2</commons-collections_version>
 		<!-- extension -->
 		<lombok_version>1.16.16</lombok_version>
 		<fastjson_version>1.2.31</fastjson_version>
