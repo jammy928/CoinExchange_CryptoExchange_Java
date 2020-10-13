@@ -61,7 +61,7 @@
 		<logback_version>1.1.11</logback_version>
 		<logback-ext-spring_version>0.1.4</logback-ext-spring_version>
 		<!-- Test Libs -->
-		<junit_version>4.12</junit_version>
+		<junit_version>4.13.1</junit_version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
