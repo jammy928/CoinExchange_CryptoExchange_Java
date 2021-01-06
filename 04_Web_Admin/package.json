@@ -18,7 +18,7 @@
         "@antv/data-set": "^0.8.7",
         "ajv": "^5.0.0",
         "area-data": "^1.0.0",
-        "axios": "^0.17.1",
+        "axios": "^0.21.1",
         "clipboard": "^1.7.1",
         "countup": "^1.8.2",
         "cropperjs": "^1.1.3",
