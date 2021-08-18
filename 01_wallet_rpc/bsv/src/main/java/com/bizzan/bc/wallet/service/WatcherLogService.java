@@ -1,5 +1,6 @@
 package com.bizzan.bc.wallet.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -12,6 +13,7 @@ import com.bizzan.bc.wallet.entity.WatcherLog;
 import java.util.Date;
 
 @Service
+@Transactional
 public class WatcherLogService {
     @Autowired
     private MongoTemplate mongoTemplate;
