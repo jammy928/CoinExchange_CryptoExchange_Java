@@ -34,7 +34,7 @@ Just draw a few sketches, just look at it。。。
 
 #### Logical architecture
 
-![逻辑架构](https://images.gitee.com/uploads/images/2020/0407/143856_66257325_2182501.png "2.png")
+![逻辑架构](https://hashcome-cos-1251041754.cos.ap-hongkong.myqcloud.com/githubimages/Architect-2.svg "2.png")
 
 #### Deployment architecture
 
