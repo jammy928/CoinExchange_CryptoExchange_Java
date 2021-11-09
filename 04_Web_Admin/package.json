@@ -27,7 +27,7 @@
         "ip": "^1.1.5",
         "iview": "^2.13.1",
         "iview-area": "^1.5.12",
-        "jquery": "^2.2.3",
+        "jquery": "^3.5.0",
         "js-cookie": "^2.2.0",
         "js-file-download": "^0.4.1",
         "rasterizehtml": "^1.2.4",
