@@ -22,7 +22,7 @@
 		<jackson.version>2.8.7</jackson.version>
 		<okhttp.version>3.6.0</okhttp.version>
 		<slf4j.version>1.7.24</slf4j.version>
-		<com.squareup.retrofit2.version>2.3.0</com.squareup.retrofit2.version>
+		<com.squareup.retrofit2.version>2.8.1</com.squareup.retrofit2.version>
 	</properties>
 
 	<packaging>jar</packaging>
