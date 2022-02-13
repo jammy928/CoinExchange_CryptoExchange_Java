@@ -16,7 +16,7 @@
     "license": "MIT",
     "dependencies": {
         "@antv/data-set": "^0.8.7",
-        "ajv": "^5.0.0",
+        "ajv": "^6.12.3",
         "area-data": "^1.0.0",
         "axios": "^0.17.1",
         "clipboard": "^1.7.1",
