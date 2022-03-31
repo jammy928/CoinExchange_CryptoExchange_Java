@@ -39,7 +39,7 @@
 		<project.build.jdk_version>1.8</project.build.jdk_version>
 		<!-- spring -->
 		<spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
-		<spring-boot_version>1.5.9.RELEASE</spring-boot_version>
+		<spring-boot_version>2.5.12</spring-boot_version>
 		<!-- 数据库连接 -->
 		<druid_version>1.1.9</druid_version>
 		<mysql.version>8.0.11</mysql.version>
