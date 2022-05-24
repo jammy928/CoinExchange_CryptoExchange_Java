@@ -142,7 +142,7 @@ public class ExchangeTradeConsumer {
 				//logger.info("取消订单消息topic={},value={},size={}", record.topic(), record.value(), records.size());
 				ExchangeOrder order = JSON.parseObject(record.value(), ExchangeOrder.class);
 				String symbol = order.getSymbol();
-				// 调用服务处理
+				// 调用Serve处理
 				exchangeOrderService.cancelOrder(order.getOrderId(), order.getTradedAmount(), order.getTurnover());
 				// 推送实时成交
 				messagingTemplate.convertAndSend("/topic/market/order-canceled/" + symbol + "/" + order.getMemberId(),

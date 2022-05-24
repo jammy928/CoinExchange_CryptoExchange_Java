@@ -142,7 +142,7 @@ public class ExchangeCoin {
     // visible: 仅仅决定是否显示在前端交易面板中
     // exchangeable: 是否可交易的，也就是enable即使状态为可用，也不一定能交易
     /**
-     * 服务器当前市价戳
+     * Serve器当前市价戳
      */
     @Transient
     private Long currentTime;

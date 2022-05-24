@@ -70,7 +70,7 @@ public class CoinConsumer {
                 Member member = list.get(i);
                 list1.add("U" + member.getId());
                 if (i % 1000 == 0 || i == size - 1) {
-                    //远程RPC服务URL,后缀为币种单位
+                    //远程RPCServeURL,后缀为币种单位
                     String serviceName = "SERVICE-RPC-" + coin.getUnit();
                     String url = "http://" + serviceName + "/rpc/address/batch";
                     ResponseEntity<List> result = restTemplate.postForEntity(url, list1, List.class);

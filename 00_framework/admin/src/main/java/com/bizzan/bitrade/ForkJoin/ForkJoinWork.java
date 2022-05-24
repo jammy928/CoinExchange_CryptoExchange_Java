@@ -87,7 +87,7 @@ public class ForkJoinWork extends RecursiveTask<Integer> {
                     wallet.setFrozenBalance(new BigDecimal(0));
                     if (coin.getEnableRpc() == BooleanEnum.IS_TRUE) {
                         String account = "U" + member.getId();
-                        //远程RPC服务URL,后缀为币种单位
+                        //远程RPCServeURL,后缀为币种单位
                         String serviceName = "SERVICE-RPC-" + coin.getUnit();
                         log.info("=====serviceName====="+serviceName);
                         try {

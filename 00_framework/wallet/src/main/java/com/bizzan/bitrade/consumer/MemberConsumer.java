@@ -61,7 +61,7 @@ public class MemberConsumer {
             MemberWallet memberWallet = memberWalletService.findByCoinUnitAndMemberId(record.key(),json.getLong("uid"));
             Assert.notNull(memberWallet,"wallet null");
             String account = "U" + json.getLong("uid")+ GeneratorUtil.getNonceString(4);
-            //远程RPC服务URL,后缀为币种单位
+            //远程RPCServeURL,后缀为币种单位
             String serviceName = "SERVICE-RPC-" + coin.getUnit();
             try{
                 String url = "http://" + serviceName + "/rpc/address/{account}";
@@ -112,7 +112,7 @@ public class MemberConsumer {
 /** 此处获取地址注释掉，所有币种地址由用户主动获取才生成  **/
 //            if(coin.getEnableRpc() == BooleanEnum.IS_TRUE) {
 //                String account = "U" + json.getLong("uid");
-//                //远程RPC服务URL,后缀为币种单位
+//                //远程RPCServeURL,后缀为币种单位
 //                String serviceName = "SERVICE-RPC-" + coin.getUnit();
 //                try{
 //                    String url = "http://" + serviceName + "/rpc/address/{account}";

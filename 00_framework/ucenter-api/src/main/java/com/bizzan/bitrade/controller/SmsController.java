@@ -55,41 +55,43 @@ public class SmsController {
      */
     @PostMapping("/code")
     public MessageResult sendCheckCode(String phone, String country) throws Exception {
-        Assert.isTrue(!memberService.phoneIsExist(phone), localeMessageSourceService.getMessage("PHONE_ALREADY_EXISTS"));
-        Assert.notNull(country, localeMessageSourceService.getMessage("REQUEST_ILLEGAL"));
-        Country country1 = countryService.findOne(country);
-        Assert.notNull(country1, localeMessageSourceService.getMessage("REQUEST_ILLEGAL"));
+        Assert.isTrue(!memberService.phoneIsExist(phone), "The phone number already exists");
+        Assert.notNull(country, "Illegal Request");
+        Country country1 = countryService.ENfindOne(country);
+        Assert.notNull(country1, "Illegal Request");
         ValueOperations valueOperations = redisTemplate.opsForValue();
         String key = SysConstant.PHONE_REG_CODE_PREFIX + phone;
         Object code = valueOperations.get(key);
         if (code != null) {
             //判断如果请求间隔小于一分钟则请求失败
             if (!BigDecimalUtils.compare(DateUtil.diffMinute((Date) (valueOperations.get(key + "Time"))), BigDecimal.ONE)) {
-                return error(localeMessageSourceService.getMessage("FREQUENTLY_REQUEST"));
+                return error("Frequent Request");
             }
         }
         String randomCode = String.valueOf(GeneratorUtil.getRandomNumber(100000, 999999));
+        log.info("random code {}",randomCode);
         MessageResult result;
         if ("86".equals(country1.getAreaCode())) {
-            Assert.isTrue(ValidateUtil.isMobilePhone(phone.trim()), localeMessageSourceService.getMessage("PHONE_EMPTY_OR_INCORRECT"));
+            Assert.isTrue(ValidateUtil.isMobilePhone(phone.trim()), "Phone number is empty or incorrect format");
             result = smsProvider.sendVerifyMessage(phone, randomCode);
         } else {
             result = smsProvider.sendInternationalMessage(randomCode, country1.getAreaCode() + phone);
         }
-        if (result.getCode() == 0) {
+        //if (result.getCode() == 0 || true) {
+        if (true) {
             valueOperations.getOperations().delete(key);
             valueOperations.getOperations().delete(key + "Time");
             // 缓存验证码
             valueOperations.set(key, randomCode, 10, TimeUnit.MINUTES);
             valueOperations.set(key + "Time", new Date(), 10, TimeUnit.MINUTES);
-            return success(localeMessageSourceService.getMessage("SEND_SMS_SUCCESS"));
+            return success("Send SMS successful");
         } else {
-            return error(localeMessageSourceService.getMessage("SEND_SMS_FAILED"));
+            return error("Send SMS failed");
         }
     }
 
     /**
-     * 重置交易密码验证码
+     * Reset transaction password verification code
      *
      * @param user
      * @return

@@ -14,9 +14,9 @@
         <FormItem prop="user">
           <Input type="text" v-model="formInline.user" :placeholder="key">
             <Select v-model="country" slot="prepend" style="width: 65px;border-bottom: 1px solid #27313e;">
-              <Option value="中国" label="+86"><span>+86</span><span style="margin-left:10px;color:#ccc">中国</span></Option>
-              <Option value="新加坡" label="+65"><span>+65</span><span style="margin-left:10px;color:#ccc">新加坡</span></Option>
-              <Option value="韩国" label="+82"><span>+82</span><span style="margin-left:10px;color:#ccc">韩国</span></Option>
+              <Option value="China" label="+86"><span>+86</span><span style="margin-left:10px;color:#ccc">China</span></Option>
+              <Option value="Singapore" label="+65"><span>+65</span><span style="margin-left:10px;color:#ccc">Singapore</span></Option>
+              <Option value="South Korea" label="+82"><span>+82</span><span style="margin-left:10px;color:#ccc">South Korea</span></Option>
               <Option value="日本" label="+81"><span>+81</span><span style="margin-left:10px;color:#ccc">日本</span></Option>
               <Option value="泰国" label="+66"><span>+66</span><span style="margin-left:10px;color:#ccc">泰国</span></Option>
               <Option value="俄罗斯" label="+7"><span>+7</span><span style="margin-left:10px;color:#ccc">俄罗斯</span></Option>
@@ -274,7 +274,7 @@ export default {
       }
     };
     return {
-      country: "中国",
+      country: "China",
       codedisabled:false,
       sendcodeValue: this.$t("uc.regist.sendcode"),
       isRegister: false,
@@ -452,7 +452,7 @@ export default {
                 params["password"] = this.formInline.password;
                 params["promotion"] = this.formInline.promotion; // 邀请码
                 params["code"] = this.formInline.code;
-                params["country"] = this.country;//"中国";
+                params["country"] = this.country;//"China";
                 params["superPartner"] = "";//this.formInline.superType;
                 params["ticket"] = this.ticket;
                 params["randStr"] = this.randStr;
@@ -495,7 +495,7 @@ export default {
               } else {
                 this.$Notice.error({
                   title: this.$t("common.tip"),
-                  desc: "请输入正确的验证码"
+                  desc: "Please enter correct verify code"
                 });
               }
             }
@@ -538,7 +538,7 @@ export default {
     success() {
       var params = {};
       params["phone"] = this.formInline.user;
-      params["country"] = "中国";
+      params["country"] = "China";
       var reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
       reg.test(params["phone"]) && this.$http.post(this.host + "/uc/mobile/code", params).then(response => {
             var resp = response.body;

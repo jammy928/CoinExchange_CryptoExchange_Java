@@ -72,7 +72,7 @@ public class GeetestController extends BaseController {
         param.put("ip_address", ip); //传输用户请求验证时所携带的IP
         //进行验证预处理
         int gtServerStatus = gtSdk.preProcess(param);
-        //将服务器状态设置到session中
+        //将Serve器状态设置到session中
         request.getSession().setAttribute(gtSdk.gtServerStatusSessionKey, gtServerStatus);
         //将userid设置到session中
         request.getSession().setAttribute("userid", userid);

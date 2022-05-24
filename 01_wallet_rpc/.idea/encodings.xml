@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/act/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bch/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bitcoin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bsv/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/btm/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ect/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eos/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/erc-eusdt/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/erc-token/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eth-support/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ltc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rpc-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usdt/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xmr/src/main/java" charset="UTF-8" />
+  </component>
+</project>

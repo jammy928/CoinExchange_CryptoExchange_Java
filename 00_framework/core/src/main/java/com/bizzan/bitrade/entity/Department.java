@@ -23,7 +23,10 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
-    @Excel(name = "部门名称", orderNum = "1", width = 20)
+
+
+   // @Excel(name = "部门名称", orderNum = "1", width = 20)
+    @Excel(name = "excel", orderNum = "1", width = 20)
     @NotNull(message = "部门名称不能为空")
     @Column(unique = true,nullable = false)
     private String name;

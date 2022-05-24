@@ -18,4 +18,6 @@ public interface CountryDao extends JpaRepository<Country,String>,JpaSpecificati
     List<Country> findAllOrderBySort();
 
     Country findByZhName(String zhname);
+
+    Country findByEnName(String name);
 }

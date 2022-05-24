@@ -257,7 +257,7 @@ public class MarketController {
 
     @RequestMapping("exchange-plate")
     public Map<String,List<TradePlateItem>> findTradePlate(String symbol){
-        //远程RPC服务URL,后缀为币种单位
+        //远程RPCServeURL,后缀为币种单位
         String serviceName = "SERVICE-EXCHANGE-TRADE";
         String url = "http://" + serviceName + "/monitor/plate?symbol="+symbol;
         ResponseEntity<HashMap> result = restTemplate.getForEntity(url, HashMap.class);
@@ -267,7 +267,7 @@ public class MarketController {
 
     @RequestMapping("exchange-plate-mini")
     public Map<String,JSONObject> findTradePlateMini(String symbol){
-        //远程RPC服务URL,后缀为币种单位
+        //远程RPCServeURL,后缀为币种单位
         String serviceName = "SERVICE-EXCHANGE-TRADE";
         String url = "http://" + serviceName + "/monitor/plate-mini?symbol="+symbol;
         ResponseEntity<HashMap> result = restTemplate.getForEntity(url, HashMap.class);
@@ -277,7 +277,7 @@ public class MarketController {
 
     @RequestMapping("exchange-plate-full")
     public Map<String,JSONObject> findTradePlateFull(String symbol){
-        //远程RPC服务URL,后缀为币种单位
+        //远程RPCServeURL,后缀为币种单位
         String serviceName = "SERVICE-EXCHANGE-TRADE";
         String url = "http://" + serviceName + "/monitor/plate-full?symbol="+symbol;
         ResponseEntity<HashMap> result = restTemplate.getForEntity(url, HashMap.class);

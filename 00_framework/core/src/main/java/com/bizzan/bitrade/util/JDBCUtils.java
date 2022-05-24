@@ -257,7 +257,7 @@ public class JDBCUtils {
             while(rs.next()){
 
                 log.info("sql>>>>"+sql);
-                log.info("会员id>>>>>"+rs.getLong("id")+">>>>币种>>>"+coinId);
+                log.info("会员id>>>>>"+rs.getLong("id")+">>>>currency>>>"+coinId);
                 stmt.setLong(1, rs.getLong("id"));
                 stmt.setString(2, coinId);
                 i++;

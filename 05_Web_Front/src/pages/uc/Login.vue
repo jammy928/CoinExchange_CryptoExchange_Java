@@ -6,9 +6,11 @@
         <FormItem prop="user">
           <Input name="user" type="text" v-model="formInline.user" :placeholder="$t('uc.login.usertip')" class="user">
             <Select v-model="country" slot="prepend" style="width: 65px">
-              <Option value="+86" label="+86"><span>+86</span><span style="margin-left:10px;color:#ccc">中国</span></Option>
-              <Option value="+65" label="+65"><span>+65</span><span style="margin-left:10px;color:#ccc">新加坡</span></Option>
-              <Option value="+82" label="+82"><span>+82</span><span style="margin-left:10px;color:#ccc">韩国</span></Option>
+              <Option value="+86" label="+86"><span>+86</span><span style="margin-left:10px;color:#ccc">China</span></Option>
+              <Option value="+65" label="+65"><span>+65</span><span style="margin-left:10px;color:#ccc">Singapore</span></Option>
+              <Option value="+82" label="+82"><span>+82</span><span style="margin-left:10px;color:#ccc">South Korea</span></Option>
+              <Option value="Nigeria" label="+234"><span>+234</span><span
+                  style="margin-left:10px;color:#ccc">Nigeria</span></Option>
               <Option value="+81" label="+81"><span>+81</span><span style="margin-left:10px;color:#ccc">日本</span></Option>
               <Option value="+66" label="+66"><span>+66</span><span style="margin-left:10px;color:#ccc">泰国</span></Option>
               <Option value="+7" label="+7"><span>+7</span><span style="margin-left:10px;color:#ccc">俄罗斯</span></Option>
@@ -34,7 +36,7 @@
           </router-link>
         </p>
         <FormItem style="margin-bottom:15px;">
-          <Button class="login_btn">{{$t('uc.login.login')}}</Button>
+          <Button class="login_btn" @click=initGtCaptcha>{{$t('uc.login.login')}}</Button>
         </FormItem>
         <div class='to_register'>
           <span>{{$t('uc.login.noaccount')}}</span>
@@ -180,11 +182,10 @@ export default {
       this.$store.commit("navigate", "nav-other");
       this.$store.state.HeaderActiveName = "0";
 
-      if (this.isLogin) {
-        this.$router.push("/uc/safe");
-      } else {
-        this.initGtCaptcha();
+      if (!this.isLogin) {
+        return;
       }
+      this.$router.push("/uc/safe");
     },
     onKeyup(ev) {
       if (ev.keyCode == 13) {
@@ -192,6 +193,30 @@ export default {
       }
     },
     initGtCaptcha() {
+      let reg = '',
+          tel = this.formInline.user,
+          flagtel = this.isValidPhonenumber(tel),
+          flagpass = this.formInline.password.length >= 6 ? true : false;
+      flagtel && flagpass && this.verifyLogin();
+      (!flagtel || !flagpass) && this.$Message.error("请填写完整的信息");
+    },
+    verifyLogin() {
+      // 直接生成一个验证码对象
+      var self = this;
+      var captcha1 = new TencentCaptcha("2031827463", function (res) {
+        res.ret == 0 &&
+        (self.isRegister = true) &&
+        (self.ticket = res.ticket) &&
+        (self.randStr = res.randstr) &&
+        self.success();
+      });
+      captcha1.show(); // 显示验证码
+    },
+    success() {
+      this.handleSubmit("formInline");
+    },
+    initGtCaptcha2() {
+      console.log('ff')
       var that = this;
       this.$http.get(this.host + this.api.uc.captcha).then(function(res) {
         window.initGeetest(
@@ -220,13 +245,16 @@ export default {
           }
         });
       $(".login_btn").click(() => {
-        let reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
+        let reg = '',
           tel = this.formInline.user,
-          flagtel = reg.test(tel),
+          flagtel = this.isValidPhonenumber(tel),
           flagpass = this.formInline.password.length >= 6 ? true : false;
         flagtel && flagpass && captchaObj.verify();
         (!flagtel || !flagpass) && this.$Message.error("请填写完整的信息");
       });
+    },
+    isValidPhonenumber(value) {
+      return (/^\d{7,}$/).test(value.replace(/[\s()+\-\.]|ext/gi, ''));
     },
     logout() {
       this.$http.post(this.host + "/uc/logout", {}).then(response => {
@@ -241,7 +269,7 @@ export default {
       });
     },
     handleSubmit(name) {
-      var result = this._captchaResult;
+      var result = true;
       if (!result) {
         $("#notice").show();
         setTimeout(function() {

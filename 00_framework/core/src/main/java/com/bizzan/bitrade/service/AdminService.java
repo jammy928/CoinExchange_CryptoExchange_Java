@@ -1,5 +1,6 @@
 package com.bizzan.bitrade.service;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.SQLQuery;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,8 @@ import com.bizzan.bitrade.service.Base.TopBaseService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Predicate;
 
 /**
  * @author GS
@@ -65,25 +65,25 @@ public class AdminService extends TopBaseService<Admin, AdminDao> {
         return dao.save(admin);
     }
 
-   /* public List<Admin> findAll(String searchKey,int pageNo,int pageSize) throws IllegalArgumentException {
-        List<Predicate> predicate = new ArrayList<Predicate>();
-        QAdmin admin  = QAdmin.admin;
-        predicate.add(QAdmin.admin.username.notEqualsIgnoreCase("root"))
-        if(StringUtils.isNotBlank(searchKey)){
-            predicate.add(admin.email.like(searchKey)
-                    .or(admin.realName.like(searchKey))
-                    .or(admin.mobilePhone.like(searchKey))
-                    .or(admin.username.like(searchKey))
-            );
-        }
-        List<Admin> list = queryFactory.selectFrom(admin)
-                .where(predicate.toArray(new Predicate[predicate.size()]))
-                .orderBy(admin.id.desc())
-                .offset(pageNo*pageSize)
-                .limit(pageSize)
-                .fetch();
-        return list;
-    }*/
+//    public List<Admin> findAll(String searchKey, int pageNo, int pageSize) throws IllegalArgumentException {
+//        List<Predicate> predicate = new ArrayList<Predicate>();
+//        QAdmin admin  = QAdmin.admin;
+//        predicate.add(QAdmin.admin.username.notEqualsIgnoreCase("root"))
+//        if(StringUtils.isNotBlank(searchKey)){
+//            predicate.add(admin.email.like(searchKey)
+//                    .or(admin.realName.like(searchKey))
+//                    .or(admin.mobilePhone.like(searchKey))
+//                    .or(admin.username.like(searchKey))
+//            );
+//        }
+//        List<Admin> list = queryFactory.selectFrom(admin)
+//                .where(predicate.toArray(new Predicate[predicate.size()]))
+//                .orderBy(admin.id.desc())
+//                .offset(pageNo*pageSize)
+//                .limit(pageSize)
+//                .fetch();
+//        return list;
+//    }
 
     public Admin findByUsername(String username) {
         return dao.findByUsername(username);

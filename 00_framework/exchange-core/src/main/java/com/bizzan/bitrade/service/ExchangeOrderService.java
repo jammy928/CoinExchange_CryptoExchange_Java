@@ -457,7 +457,7 @@ public class ExchangeOrderService extends BaseService {
      *
      * @param fee                 手续费
      * @param member              订单拥有者
-     * @param incomeSymbol        币种
+     * @param incomeSymbol        currency
      * @param secondReferrerAward 二级推荐人是否返佣控制
      */
     public void promoteReward(BigDecimal fee, Member member, String incomeSymbol, boolean secondReferrerAward) {

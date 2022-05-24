@@ -516,7 +516,7 @@ export default {
       this.checkLogin();
     },
     logout() {
-      this.$http.post(this.host + "/uc/loginout", {}).then(response => {
+      this.$http.post(this.host + this.api.uc.loginout, {}).then(response => {
         var resp = response.body;
         if (resp.code == 0) {
           this.$Message.success(resp.message);

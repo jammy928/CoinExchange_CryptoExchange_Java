@@ -130,7 +130,7 @@ public class ExchangeCoinController extends BaseAdminController {
         Predicate predicate = getPredicate(screen);
         Page<ExchangeCoin> all = exchangeCoinService.findAll(predicate, pageModel.getPageable());
 
-        //远程RPC服务URL,获取当前交易引擎支持的币种
+        //远程RPCServeURL,获取当前交易引擎支持的币种
         String serviceName = "SERVICE-EXCHANGE-TRADE";
         String exchangeUrl = "http://" + serviceName + "/monitor/engines";
         ResponseEntity<HashMap> result = restTemplate.getForEntity(exchangeUrl, HashMap.class);
@@ -364,7 +364,7 @@ public class ExchangeCoinController extends BaseAdminController {
     }
 
     /**
-     * 获取交易区币种 所支持的交易 币种
+     * 获取交易区币种 所支持的交易 currency
      *
      * @return
      */

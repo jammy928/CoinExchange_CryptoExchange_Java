@@ -206,7 +206,7 @@ private KafkaTemplate kafkaTemplate ;
 			*//*LinkedHashMap<String,String> fieldMap = new LinkedHashMap<>();
 			fieldMap.put("memberId","会员id");
 			fieldMap.put("balance","余额");
-			fieldMap.put("coin.unit","币种");*//*
+			fieldMap.put("coin.unit","currency");*//*
 			Field[] fields = MemberWallet.class.getDeclaredFields();
 			ExcelUtil.listToExcel(list,fields,65535,out);*/
 		} catch (Exception e) {

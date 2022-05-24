@@ -156,7 +156,7 @@ export default {
       }else{
         var params = {};
         params["phone"] = this.formInline.phone;
-        params["country"] = "中国";
+        params["country"] = "China";
         params["envelopeId"] = this.envelopeInfo.id;
         if(this.envelopeInfo.id == 0 || this.envelopeInfo.id == null || this.envelopeInfo.id == undefined){
           this.$Message.error("红包不存在");

@@ -20,7 +20,7 @@ ${AnsiColor.BRIGHT_YELLOW}
 
                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                    佛祖保佑      永不宕机     永无bug
-              https://www.bizzan.com
+              https://www.rylxes.com
                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ${AnsiColor.BRIGHT_GREEN}
                      Spring Boot Version: ${spring-boot.formatted-version}

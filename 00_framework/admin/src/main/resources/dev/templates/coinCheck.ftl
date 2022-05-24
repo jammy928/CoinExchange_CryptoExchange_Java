@@ -31,12 +31,12 @@
 	    }
 	</style>
 	<body>
-		<h3 style="text-align:center;">币种RPC接口健康检查报告</h3>
+		<h3 style="text-align:center;">币种RPCInterface Health Check Report</h3>
 	    <hr>
 		<div>
 		    <h4 style="color:#FF0000;">需要注意的币种：</h4>
 		    <table class="gridtable">
-		    	<tr><th>币种</th><th>账户类型</th><th>RPC</th><th>区块高度</th></tr>
+		    	<tr><th>currency</th><th>账户类型</th><th>RPC</th><th>区块高度</th></tr>
 		    	<#list noticeList as coin>
 		    		<tr>
 		    			<td style="color:#FF0000;">${coin.unit}</td>
@@ -59,7 +59,7 @@
 		<div>
 		    <h4>区块高度变化币种：</h4>
 		    <table class="gridtable">
-		    	<tr><th>币种</th><th>账户类型</th><th>RPC</th><th>区块高度</th></tr>
+		    	<tr><th>currency</th><th>账户类型</th><th>RPC</th><th>区块高度</th></tr>
 		    	<#list changeList as coin>
 		    		<tr>
 		    			<td>${coin.unit}</td>
@@ -84,7 +84,7 @@
 		<div>
 		    <h4>区块高度未变化币种：</h4>
 		    <table class="gridtable">
-		    	<tr><th>币种</th><th>账户类型</th><th>RPC</th><th>区块高度</th></tr>
+		    	<tr><th>currency</th><th>账户类型</th><th>RPC</th><th>区块高度</th></tr>
 		    	<#list nochangeList as coin>
 		    		<tr>
 		    			<td>${coin.unit}</td>

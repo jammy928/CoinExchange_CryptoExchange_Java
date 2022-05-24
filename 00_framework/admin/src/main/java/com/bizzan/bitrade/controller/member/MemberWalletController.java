@@ -160,7 +160,7 @@ public class MemberWalletController extends BaseAdminController {
         
         String[] adminList = admins.split(",");
         for(int i = 0; i < adminList.length; i++) {
-			sendEmailMsg(adminList[i], "管理员人工充值(用户ID: " + uid + ", 币种: " + unit + ", 数量: " + amount + "); 操作者：" +admin.getUsername() + "/" + admin.getMobilePhone(), "人工充值通知");
+			sendEmailMsg(adminList[i], "管理员人工充值(用户ID: " + uid + ", currency: " + unit + ", 数量: " + amount + "); 操作者：" +admin.getUsername() + "/" + admin.getMobilePhone(), "人工充值通知");
 		}
         
         return success(messageSource.getMessage("SUCCESS"));

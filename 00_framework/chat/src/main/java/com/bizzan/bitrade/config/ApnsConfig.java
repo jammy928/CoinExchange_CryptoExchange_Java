@@ -21,7 +21,7 @@ public class ApnsConfig {
         InputStream is = new FileInputStream(certFile);
         System.out.println("passowrd:"+password);
         com.cdeer.apns.http2.core.model.ApnsConfig config = new com.cdeer.apns.http2.core.model.ApnsConfig();
-        config.setName("bitrade");// 推送服务名称
+        config.setName("bitrade");// 推送Serve名称
         config.setDevEnv(isDevEnv);// 是否是开发环境
         config.setKeyStore(is);// 证书
         config.setPassword(password);// 证书密码

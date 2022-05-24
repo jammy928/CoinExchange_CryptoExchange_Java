@@ -25,4 +25,8 @@ public class CountryService {
         return countryDao.findByZhName(zhName);
     }
 
+    public Country ENfindOne(String zhName){
+        return countryDao.findByEnName(zhName);
+    }
+
 }

@@ -282,7 +282,7 @@ public class WithdrawController {
             json.put("fee", fee);
             //预计到账数量
             json.put("arriveAmount", sub(amount, fee));
-            //币种
+            //currency
             json.put("coin", coin);
             //提币地址
             json.put("address", address);

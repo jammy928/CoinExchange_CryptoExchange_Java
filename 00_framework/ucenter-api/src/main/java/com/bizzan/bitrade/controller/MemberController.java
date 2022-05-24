@@ -45,7 +45,7 @@ public class MemberController extends BaseController {
     //签到
     @PostMapping("sign-in")
     public MessageResult signIn(@SessionAttribute(SESSION_MEMBER) AuthMember user) {
-        //校验 签到活动 币种 会员 会员钱包
+        //校验 签到活动 currency 会员 会员钱包
         Assert.notNull(user, "The login timeout!");
 
         Sign sign = signService.fetchUnderway();
@@ -75,7 +75,7 @@ public class MemberController extends BaseController {
      */
     @PostMapping("my-info")
     public MessageResult myInfo(@SessionAttribute(SESSION_MEMBER) AuthMember user) {
-        //校验 签到活动 币种 会员 会员钱包
+        //校验 签到活动 currency 会员 会员钱包
         Assert.notNull(user, "登录信息已超时!");
 
         Member member = memberService.findOne(user.getId());

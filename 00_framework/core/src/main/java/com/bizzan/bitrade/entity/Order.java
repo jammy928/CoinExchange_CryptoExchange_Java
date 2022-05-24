@@ -79,7 +79,7 @@ public class Order {
     private String customerRealName;
 
     /**
-     * 币种
+     * currency
      */
     @JoinColumn(name = "coin_id", nullable = false)
     @ManyToOne

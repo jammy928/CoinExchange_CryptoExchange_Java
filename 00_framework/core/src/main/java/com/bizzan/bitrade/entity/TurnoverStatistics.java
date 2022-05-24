@@ -47,7 +47,7 @@ public class TurnoverStatistics {
     private String unit;
 
     /**
-     * 当天的交易量:币种（coinUnit）的数量
+     * 当天的交易量:currency（coinUnit）的数量
      */
     @Column(name = "Salary1", columnDefinition = "decimal(18,8)")
     private BigDecimal amount ;

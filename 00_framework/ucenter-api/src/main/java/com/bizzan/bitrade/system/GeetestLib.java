@@ -69,7 +69,7 @@ public class GeetestLib {
 	public boolean debugCode = true;
 	
 	/**
-	 * 极验验证API服务状态Session Key
+	 * 极验验证APIServe状态Session Key
 	 */
 	public String gtServerStatusSessionKey = "gt_server_status";
 	
@@ -294,7 +294,7 @@ public class GeetestLib {
 	
 	
 	/**
-	 * 服务正常的情况下使用的验证方式,向gt-server进行二次验证,获取验证结果
+	 * Serve正常的情况下使用的验证方式,向gt-server进行二次验证,获取验证结果
 	 * 
 	 * @param challenge
 	 * @param validate
@@ -423,10 +423,10 @@ public class GeetestLib {
 	}
 	
 	/**
-	 * 发送GET请求，获取服务器返回结果
+	 * 发送GET请求，获取Serve器返回结果
 	 * 
 	 * @param getURL
-	 * @return 服务器返回结果
+	 * @return Serve器返回结果
 	 * @throws IOException
 	 */
 	private String readContentFromGet(String URL) throws IOException {
@@ -438,11 +438,11 @@ public class GeetestLib {
 		connection.setConnectTimeout(2000);// 设置连接主机超时（单位：毫秒）
 		connection.setReadTimeout(2000);// 设置从主机读取数据超时（单位：毫秒）
 
-		// 建立与服务器的连接，并未发送数据
+		// 建立与Serve器的连接，并未发送数据
 		connection.connect();
 		
 		if (connection.getResponseCode() == 200) {
-			// 发送数据到服务器并使用Reader读取返回的数据
+			// 发送数据到Serve器并使用Reader读取返回的数据
 			StringBuffer sBuffer = new StringBuffer();
 
 			InputStream inStream = null;
@@ -463,10 +463,10 @@ public class GeetestLib {
 	}
 	
 	/**
-	 * 发送POST请求，获取服务器返回结果
+	 * 发送POST请求，获取Serve器返回结果
 	 * 
 	 * @param getURL
-	 * @return 服务器返回结果
+	 * @return Serve器返回结果
 	 * @throws IOException
 	 */
 	private String readContentFromPost(String URL, String data) throws IOException {
@@ -483,7 +483,7 @@ public class GeetestLib {
 		connection.setDoOutput(true);
 		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		
-		// 建立与服务器的连接，并未发送数据
+		// 建立与Serve器的连接，并未发送数据
 		connection.connect();
 		
 		 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(connection.getOutputStream(), "utf-8");  
@@ -492,7 +492,7 @@ public class GeetestLib {
 		 outputStreamWriter.close();
 		
 		if (connection.getResponseCode() == 200) {
-			// 发送数据到服务器并使用Reader读取返回的数据
+			// 发送数据到Serve器并使用Reader读取返回的数据
 			StringBuffer sBuffer = new StringBuffer();
 
 			InputStream inStream = null;

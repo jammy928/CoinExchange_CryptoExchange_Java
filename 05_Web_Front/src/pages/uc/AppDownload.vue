@@ -96,7 +96,7 @@ import $ from "jquery";
 export default {
   data() {
     return {
-      country: "中国",
+      country: "China",
       version: "1.0.0",
       publishTime: "2019/08/08 12:32:00"
     };

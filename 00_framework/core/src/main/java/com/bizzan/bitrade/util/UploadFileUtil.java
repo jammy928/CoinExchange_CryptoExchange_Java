@@ -28,7 +28,7 @@ public class UploadFileUtil {
                 uploadPath = System.getProperty("user.dir") + File.separator + "webapp"
                         + File.separator + "common/upload" + File.separator + directory;
             } else {
-                //linux服务器上传  //System.getProperty("user.dir")+ File.separator+
+                //linuxServe器上传  //System.getProperty("user.dir")+ File.separator+
                 uploadPath = "/web/upload" + File.separator + directory;
             }
             File file2 = new File(uploadPath);
@@ -68,7 +68,7 @@ public class UploadFileUtil {
         }
         String newImage = null;
         try {
-            /** 对服务器上的临时文件进行处理 */
+            /** 对Serve器上的临时文件进行处理 */
             Image srcFile = ImageIO.read(oldFile);
 
             String srcImgPath = newFile.getAbsoluteFile().toString();

@@ -90,6 +90,8 @@ public class RegisterController {
 
     @Autowired
     private CountryService countryService;
+
+
     @Autowired
     private GeetestController gtestCon ;
 
@@ -287,6 +289,7 @@ public class RegisterController {
         if (result != null) {
             return result;
         }
+        log.info("loginByPhone -> {}",loginByPhone);
 
         if ("中国".equals(loginByPhone.getCountry())) {
             Assert.isTrue(ValidateUtil.isMobilePhone(loginByPhone.getPhone().trim()), localeMessageSourceService.getMessage("PHONE_EMPTY_OR_INCORRECT"));
@@ -294,7 +297,7 @@ public class RegisterController {
         String ip = request.getHeader("X-Real-IP");
         String phone = loginByPhone.getPhone();
         ValueOperations valueOperations = redisTemplate.opsForValue();
-        Object code =valueOperations.get(SysConstant.PHONE_REG_CODE_PREFIX + phone);
+        Object code = valueOperations.get(SysConstant.PHONE_REG_CODE_PREFIX + phone);
         isTrue(!memberService.phoneIsExist(phone), localeMessageSourceService.getMessage("PHONE_ALREADY_EXISTS"));
         isTrue(!memberService.usernameIsExist(loginByPhone.getUsername()), localeMessageSourceService.getMessage("USERNAME_ALREADY_EXISTS"));
         if (StringUtils.hasText(loginByPhone.getPromotion().trim())) {
@@ -303,7 +306,7 @@ public class RegisterController {
         //校验是否通过验证码 短信上行
         //isTrue(verifier.verify(loginByPhone.getValidate(),""),localeMessageSourceService.getMessage("VERIFICATION_CODE_INCORRECT"));
         //腾讯防水注册校验
-        isTrue(gtestCon.watherProof(loginByPhone.getTicket(),loginByPhone.getRandStr(),ip),localeMessageSourceService.getMessage("VERIFICATION_PICTURE_NOT_CORRECT"));
+        //isTrue(gtestCon.watherProof(loginByPhone.getTicket(),loginByPhone.getRandStr(),ip),localeMessageSourceService.getMessage("VERIFICATION_PICTURE_NOT_CORRECT"));
         // 换种校验方式
         notNull(code, localeMessageSourceService.getMessage("VERIFICATION_CODE_NOT_EXISTS"));
         if (!code.toString().equals(loginByPhone.getCode())) {
@@ -329,9 +332,8 @@ public class RegisterController {
         member.setMemberLevel(MemberLevelEnum.GENERAL);
         Location location = new Location();
         location.setCountry(loginByPhone.getCountry());
-        Country country = new Country();
-        country.setZhName(loginByPhone.getCountry());
-        member.setCountry(country);
+        Country country1 = countryService.ENfindOne(loginByPhone.getCountry());
+        member.setCountry(country1);
         member.setLocation(location);
         member.setUsername(loginByPhone.getUsername());
         member.setPassword(password);

@@ -16,6 +16,8 @@ import java.util.Date;
 @Entity
 @Data
 public class Feedback {
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;

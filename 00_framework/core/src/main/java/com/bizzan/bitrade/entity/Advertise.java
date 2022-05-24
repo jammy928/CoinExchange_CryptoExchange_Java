@@ -66,7 +66,7 @@ public class Advertise implements Serializable {
     private Date updateTime;
 
     /**
-     * 币种
+     * currency
      */
     @ExcelEntity
     @JoinColumn(name = "coin_id")

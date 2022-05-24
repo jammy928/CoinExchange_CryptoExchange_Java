@@ -45,30 +45,30 @@ public class EurekaStateListener {
     
 	@EventListener(condition = "#event.replication==false")
     public void listen(EurekaInstanceCanceledEvent event) {
-        String msg="您的服务"+event.getAppName()+"\n"+event.getServerId()+"已下线";
+        String msg="您的Serve"+event.getAppName()+"\n"+event.getServerId()+"已下线";
         logger.info(msg);
         
         String[] adminList = admins.split(",");
 		for(int i = 0; i < adminList.length; i++) {
-			sendEmailMsg(adminList[i], msg, "[服务]服务下线通知");
+			sendEmailMsg(adminList[i], msg, "[Serve]Serve下线通知");
 		}
     }
  
     @EventListener(condition = "#event.replication==false")
     public void listen(EurekaInstanceRegisteredEvent event) {
         InstanceInfo instanceInfo = event.getInstanceInfo();
-        String msg="服务"+instanceInfo.getAppName()+"\n"+  instanceInfo.getHostName()+":"+ instanceInfo.getPort()+ " \nip: " +instanceInfo.getIPAddr() +"进行注册";
+        String msg="Serve"+instanceInfo.getAppName()+"\n"+  instanceInfo.getHostName()+":"+ instanceInfo.getPort()+ " \nip: " +instanceInfo.getIPAddr() +"进行注册";
         logger.info(msg);
 
         String[] adminList = admins.split(",");
 		for(int i = 0; i < adminList.length; i++) {
-			sendEmailMsg(adminList[i], msg, "[服务]服务上线通知");
+			sendEmailMsg(adminList[i], msg, "[Serve]Serve上线通知");
 		}
     }
  
     @EventListener
     public void listen(EurekaInstanceRenewedEvent event) {
-        logger.info("服务{}进行续约", event.getServerId() +"  "+ event.getAppName());
+        logger.info("Serve{}renew", event.getServerId() +"  "+ event.getAppName());
     }
  
     @EventListener
@@ -78,7 +78,7 @@ public class EurekaStateListener {
  
     @EventListener
     public void listen(EurekaServerStartedEvent event) {
-        logger.info("注册中心服务端启动,{}", System.currentTimeMillis());
+        logger.info("注册中心Serve端启动,{}", System.currentTimeMillis());
     }
  
     @Async

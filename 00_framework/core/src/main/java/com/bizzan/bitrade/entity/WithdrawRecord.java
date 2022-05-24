@@ -32,7 +32,7 @@ public class WithdrawRecord {
      */
     private Long memberId;
     /**
-     * 币种
+     * currency
      */
     @JoinColumn(name = "coin_id", nullable = false)
     @ManyToOne

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="erc-eusdt" />
+        <module name="rpc-common" />
+        <module name="bsv" />
+        <module name="bch" />
+        <module name="eos" />
+        <module name="erc-token" />
+        <module name="eth-support" />
+        <module name="act" />
+        <module name="ect" />
+        <module name="usdt" />
+        <module name="eth" />
+        <module name="btm" />
+        <module name="ltc" />
+        <module name="xmr" />
+        <module name="bitcoin" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

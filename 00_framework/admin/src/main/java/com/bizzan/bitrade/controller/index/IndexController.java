@@ -303,7 +303,7 @@ public class IndexController {
 
 
     /**
-     * 处理结果集 （将法币/币币  的 成交量/成交额/手续费/币种 信息 聚合到一个map中）
+     * 处理结果集 （将法币/币币  的 成交量/成交额/手续费/currency 信息 聚合到一个map中）
      * @param list
      * @return
      */
