@@ -53,7 +53,7 @@
 		<!-- extension -->
 		<lombok_version>1.16.16</lombok_version>
 		<fastjson_version>1.2.31</fastjson_version>
-		<kafka_version>0.10.0.0</kafka_version>
+		<kafka_version>0.10.2.2</kafka_version>
 		<!-- Log libs -->
 		<slf4j_version>1.7.7</slf4j_version>
 		<jcl_version>1.1</jcl_version>
